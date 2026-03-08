@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e9d6367cba997a68152e7d79f80e754a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
+                    z-index: 1000; background: #0d0d1a; color: white;
+                    padding: 10px 20px; border-radius: 8px; border: 1px solid #ff3355;
+                    font-family: monospace; text-align: center;">
+            <span style="color:#ff3355; font-weight:900; letter-spacing:3px;">GOVTRUTH</span>
+            <span style="color:#888; font-size:0.8em; margin-left:10px;">
+                🛰️ BJP 2024 Infrastructure Promises — Satellite Verification
+            </span>
+        </div>
+        
+    
+        <div style="position: fixed; bottom: 30px; right: 10px; z-index: 1000;
+                    background: #0d0d1a; color: white; padding: 15px;
+                    border-radius: 8px; border: 1px solid #1a1a3a;
+                    font-family: monospace; font-size: 0.8em;">
+            <div style="color:#ff3355; font-weight:bold; margin-bottom:8px;">VERIFICATION STATUS</div>
+            <div>🟠 Pending Satellite Review</div>
+            <div>🟢 Verified — Construction Confirmed</div>
+            <div>🟡 Partial — Incomplete</div>
+            <div>🔴 Not Found — Empty Ground</div>
+            <div style="color:#444; margin-top:8px; font-size:0.75em;">
+                Source: ESA Sentinel-2 / Copernicus
+            </div>
+        </div>
+        
+    
+            <div class="folium-map" id="map_e9d6367cba997a68152e7d79f80e754a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e9d6367cba997a68152e7d79f80e754a = L.map(
+                "map_e9d6367cba997a68152e7d79f80e754a",
+                {
+                    center: [20.5937, 78.9629],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5ec438bfde49611b81150a20d45fd2b8 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5ec438bfde49611b81150a20d45fd2b8.addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var marker_e9116e62dfb498d9dcfb530cfe9e604d = L.marker(
+                [26.8, 75.8],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_375b208d97fe04402939cc58948c6309 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2db7f44190a0ce81bcd117fe2cab5170 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9642545aa1685decc315dc642875ff36 = $(`<div id="html_9642545aa1685decc315dc642875ff36" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Delhi-Mumbai Expressway                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Complete all 26 Greenfield expressways under Bharatmala Phase 1...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹10,23,784 Crore (total Bharatmala)                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 75% complete as of March 2024                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Delays of 2-5 years reported in 18 of 26 corridors                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 26.8, 75.8 | Rajasthan                     </div>                 </div>                 </div>`)[0];
+                popup_2db7f44190a0ce81bcd117fe2cab5170.setContent(html_9642545aa1685decc315dc642875ff36);
+            
+        
+
+        marker_e9116e62dfb498d9dcfb530cfe9e604d.bindPopup(popup_2db7f44190a0ce81bcd117fe2cab5170)
+        ;
+
+        
+    
+    
+            marker_e9116e62dfb498d9dcfb530cfe9e604d.bindTooltip(
+                `<div>
+                     🛰️ Delhi-Mumbai Expressway — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e9116e62dfb498d9dcfb530cfe9e604d.setIcon(icon_375b208d97fe04402939cc58948c6309);
+            
+    
+            var circle_176d733c370b9da6a766aac5c4bd41c9 = L.circle(
+                [26.8, 75.8],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_176d733c370b9da6a766aac5c4bd41c9.bindTooltip(
+                `<div>
+                     Verification zone: Delhi-Mumbai Expressway
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_32fd11da67844f661f8709745cede426 = L.marker(
+                [31.6, 75.0],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_2309968ed895441698f14205c4d8c9ae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8b9a7849cf6c402c2949b8c2fca9fe0f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9f6083bf89747a93358e0876311fe975 = $(`<div id="html_9f6083bf89747a93358e0876311fe975" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Delhi-Amritsar-Katra Expressway                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Complete all 26 Greenfield expressways under Bharatmala Phase 1...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹10,23,784 Crore (total Bharatmala)                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 75% complete as of March 2024                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Delays of 2-5 years reported in 18 of 26 corridors                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 31.6, 75.0 | Punjab                     </div>                 </div>                 </div>`)[0];
+                popup_8b9a7849cf6c402c2949b8c2fca9fe0f.setContent(html_9f6083bf89747a93358e0876311fe975);
+            
+        
+
+        marker_32fd11da67844f661f8709745cede426.bindPopup(popup_8b9a7849cf6c402c2949b8c2fca9fe0f)
+        ;
+
+        
+    
+    
+            marker_32fd11da67844f661f8709745cede426.bindTooltip(
+                `<div>
+                     🛰️ Delhi-Amritsar-Katra Expressway — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_32fd11da67844f661f8709745cede426.setIcon(icon_2309968ed895441698f14205c4d8c9ae);
+            
+    
+            var circle_0e16cf8ba11092bab3cd052630a5b1c9 = L.circle(
+                [31.6, 75.0],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_0e16cf8ba11092bab3cd052630a5b1c9.bindTooltip(
+                `<div>
+                     Verification zone: Delhi-Amritsar-Katra Expressway
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a6fa3aa73f1510e4331717138eac31a7 = L.marker(
+                [13.0, 79.5],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_f6914e53e6c35998a970d501e7d460ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_abf244866ebfeff31e4afa6741970ac0 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e0b72e63bf96df53376b1023af750e86 = $(`<div id="html_e0b72e63bf96df53376b1023af750e86" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Bengaluru-Chennai Expressway                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Complete all 26 Greenfield expressways under Bharatmala Phase 1...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹10,23,784 Crore (total Bharatmala)                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 75% complete as of March 2024                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Delays of 2-5 years reported in 18 of 26 corridors                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 13.0, 79.5 | Tamil Nadu                     </div>                 </div>                 </div>`)[0];
+                popup_abf244866ebfeff31e4afa6741970ac0.setContent(html_e0b72e63bf96df53376b1023af750e86);
+            
+        
+
+        marker_a6fa3aa73f1510e4331717138eac31a7.bindPopup(popup_abf244866ebfeff31e4afa6741970ac0)
+        ;
+
+        
+    
+    
+            marker_a6fa3aa73f1510e4331717138eac31a7.bindTooltip(
+                `<div>
+                     🛰️ Bengaluru-Chennai Expressway — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a6fa3aa73f1510e4331717138eac31a7.setIcon(icon_f6914e53e6c35998a970d501e7d460ab);
+            
+    
+            var circle_87f8e8cd9678307fafaca2267069f98f = L.circle(
+                [13.0, 79.5],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_87f8e8cd9678307fafaca2267069f98f.bindTooltip(
+                `<div>
+                     Verification zone: Bengaluru-Chennai Expressway
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_12d8e6b1d54558acb744764ed10d9385 = L.marker(
+                [15.3, 77.0],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_bf16a4f4067f9a72b3062c452dc93ab0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2965d919174b9bcd0ce1f3abe7ea990d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5b7f3a3f7338abf9e60d29657a5d5467 = $(`<div id="html_5b7f3a3f7338abf9e60d29657a5d5467" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Hyderabad-Bengaluru Corridor                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Complete all 26 Greenfield expressways under Bharatmala Phase 1...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹10,23,784 Crore (total Bharatmala)                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 75% complete as of March 2024                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Delays of 2-5 years reported in 18 of 26 corridors                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 15.3, 77.0 | Andhra Pradesh                     </div>                 </div>                 </div>`)[0];
+                popup_2965d919174b9bcd0ce1f3abe7ea990d.setContent(html_5b7f3a3f7338abf9e60d29657a5d5467);
+            
+        
+
+        marker_12d8e6b1d54558acb744764ed10d9385.bindPopup(popup_2965d919174b9bcd0ce1f3abe7ea990d)
+        ;
+
+        
+    
+    
+            marker_12d8e6b1d54558acb744764ed10d9385.bindTooltip(
+                `<div>
+                     🛰️ Hyderabad-Bengaluru Corridor — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_12d8e6b1d54558acb744764ed10d9385.setIcon(icon_bf16a4f4067f9a72b3062c452dc93ab0);
+            
+    
+            var circle_38d5ea27960b2f9876f011b0d2de0306 = L.circle(
+                [15.3, 77.0],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_38d5ea27960b2f9876f011b0d2de0306.bindTooltip(
+                `<div>
+                     Verification zone: Hyderabad-Bengaluru Corridor
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3fc977468e4f6134c75dc451b2b3d2af = L.marker(
+                [26.8, 81.0],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_2250a879c0a3b23992820e674dc26f9a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_25d78cca517888f36831a17ad5553876 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3a2720993fb9444a8dc19af6ed1cb119 = $(`<div id="html_3a2720993fb9444a8dc19af6ed1cb119" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Ganga Expressway UP                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Complete all 26 Greenfield expressways under Bharatmala Phase 1...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹10,23,784 Crore (total Bharatmala)                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 75% complete as of March 2024                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Delays of 2-5 years reported in 18 of 26 corridors                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 26.8, 81.0 | Uttar Pradesh                     </div>                 </div>                 </div>`)[0];
+                popup_25d78cca517888f36831a17ad5553876.setContent(html_3a2720993fb9444a8dc19af6ed1cb119);
+            
+        
+
+        marker_3fc977468e4f6134c75dc451b2b3d2af.bindPopup(popup_25d78cca517888f36831a17ad5553876)
+        ;
+
+        
+    
+    
+            marker_3fc977468e4f6134c75dc451b2b3d2af.bindTooltip(
+                `<div>
+                     🛰️ Ganga Expressway UP — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3fc977468e4f6134c75dc451b2b3d2af.setIcon(icon_2250a879c0a3b23992820e674dc26f9a);
+            
+    
+            var circle_2fca41d99f7e90043d225622f72d08ff = L.circle(
+                [26.8, 81.0],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_2fca41d99f7e90043d225622f72d08ff.bindTooltip(
+                `<div>
+                     Verification zone: Ganga Expressway UP
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0f61581304b7b66923256221ff0e671d = L.marker(
+                [23.0, 77.0],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_6edabc739733e1ca8eba1be2a77f6650 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1129252349fe87a858f5b078eaedf1c2 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_39d767b80c7cfdc5ec63a39cd22aab9d = $(`<div id="html_39d767b80c7cfdc5ec63a39cd22aab9d" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         NH-44 Expansion Kashmir to Kanyakumari                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Build 2 lakh km of national highways by 2024...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹1,44,634 Crore (2024-25 budget)                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 1,44,955 km NH network as of 2023                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Quality audit pending for 34% of new construction                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 23.0, 77.0 | Multiple                     </div>                 </div>                 </div>`)[0];
+                popup_1129252349fe87a858f5b078eaedf1c2.setContent(html_39d767b80c7cfdc5ec63a39cd22aab9d);
+            
+        
+
+        marker_0f61581304b7b66923256221ff0e671d.bindPopup(popup_1129252349fe87a858f5b078eaedf1c2)
+        ;
+
+        
+    
+    
+            marker_0f61581304b7b66923256221ff0e671d.bindTooltip(
+                `<div>
+                     🛰️ NH-44 Expansion Kashmir to Kanyakumari — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0f61581304b7b66923256221ff0e671d.setIcon(icon_6edabc739733e1ca8eba1be2a77f6650);
+            
+    
+            var circle_eb4c7c828129f40ea54943329856bd30 = L.circle(
+                [23.0, 77.0],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_eb4c7c828129f40ea54943329856bd30.bindTooltip(
+                `<div>
+                     Verification zone: NH-44 Expansion Kashmir to Kanyakumari
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_7d1fd204db7f02e70f6a4f2d17e4fac3 = L.marker(
+                [24.5, 73.7],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_114c836bae7f4038095006b641c1b010 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1569e4850c5e081eb9e9056135d4c14c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_bba4410cefc3782887ffd00f696b1e3b = $(`<div id="html_bba4410cefc3782887ffd00f696b1e3b" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         NH-48 Delhi Mumbai Highway                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Build 2 lakh km of national highways by 2024...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹1,44,634 Crore (2024-25 budget)                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 1,44,955 km NH network as of 2023                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Quality audit pending for 34% of new construction                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 24.5, 73.7 | Rajasthan                     </div>                 </div>                 </div>`)[0];
+                popup_1569e4850c5e081eb9e9056135d4c14c.setContent(html_bba4410cefc3782887ffd00f696b1e3b);
+            
+        
+
+        marker_7d1fd204db7f02e70f6a4f2d17e4fac3.bindPopup(popup_1569e4850c5e081eb9e9056135d4c14c)
+        ;
+
+        
+    
+    
+            marker_7d1fd204db7f02e70f6a4f2d17e4fac3.bindTooltip(
+                `<div>
+                     🛰️ NH-48 Delhi Mumbai Highway — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7d1fd204db7f02e70f6a4f2d17e4fac3.setIcon(icon_114c836bae7f4038095006b641c1b010);
+            
+    
+            var circle_1a0d7e620094c12d297a33172ea90d30 = L.circle(
+                [24.5, 73.7],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_1a0d7e620094c12d297a33172ea90d30.bindTooltip(
+                `<div>
+                     Verification zone: NH-48 Delhi Mumbai Highway
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_7d89cdd096c9f284ac8bd06527b87bc7 = L.marker(
+                [19.97, 72.69],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_5e815da437b024ea601ab9c976b820d3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "anchor",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_627cc49c49fa6032ac140d5d14ba1933 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1a8bab4d547695e491f851b5a7172336 = $(`<div id="html_1a8bab4d547695e491f851b5a7172336" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Vadhavan Port Maharashtra                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Complete Sagarmala — 400+ port projects worth ₹5.48 lakh crore...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹5,48,000 Crore                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 217 projects completed worth ₹1.02 lakh crore                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Cost overruns in 67% of projects reviewed                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 19.97, 72.69 | Maharashtra                     </div>                 </div>                 </div>`)[0];
+                popup_627cc49c49fa6032ac140d5d14ba1933.setContent(html_1a8bab4d547695e491f851b5a7172336);
+            
+        
+
+        marker_7d89cdd096c9f284ac8bd06527b87bc7.bindPopup(popup_627cc49c49fa6032ac140d5d14ba1933)
+        ;
+
+        
+    
+    
+            marker_7d89cdd096c9f284ac8bd06527b87bc7.bindTooltip(
+                `<div>
+                     🛰️ Vadhavan Port Maharashtra — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7d89cdd096c9f284ac8bd06527b87bc7.setIcon(icon_5e815da437b024ea601ab9c976b820d3);
+            
+    
+            var circle_f815140133245fb3a1e9b4909df9653a = L.circle(
+                [19.97, 72.69],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_f815140133245fb3a1e9b4909df9653a.bindTooltip(
+                `<div>
+                     Verification zone: Vadhavan Port Maharashtra
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8699b64198447225716cd54310dde2aa = L.marker(
+                [7.05, 93.9],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_4df4eb80539d1c89caea1da379485cf6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "anchor",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6bbb5886249133c1edf05bb63f2ea080 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_76166a74a204841abf9a83a416942e6d = $(`<div id="html_76166a74a204841abf9a83a416942e6d" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Galathea Bay Port Andaman                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Complete Sagarmala — 400+ port projects worth ₹5.48 lakh crore...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹5,48,000 Crore                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 217 projects completed worth ₹1.02 lakh crore                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Cost overruns in 67% of projects reviewed                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 7.05, 93.9 | Andaman                     </div>                 </div>                 </div>`)[0];
+                popup_6bbb5886249133c1edf05bb63f2ea080.setContent(html_76166a74a204841abf9a83a416942e6d);
+            
+        
+
+        marker_8699b64198447225716cd54310dde2aa.bindPopup(popup_6bbb5886249133c1edf05bb63f2ea080)
+        ;
+
+        
+    
+    
+            marker_8699b64198447225716cd54310dde2aa.bindTooltip(
+                `<div>
+                     🛰️ Galathea Bay Port Andaman — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8699b64198447225716cd54310dde2aa.setIcon(icon_4df4eb80539d1c89caea1da379485cf6);
+            
+    
+            var circle_0ef2ae27f54d2e9dc84e349c0014dc37 = L.circle(
+                [7.05, 93.9],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_0ef2ae27f54d2e9dc84e349c0014dc37.bindTooltip(
+                `<div>
+                     Verification zone: Galathea Bay Port Andaman
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a3ffc7fb95d474b402043e2e758e1983 = L.marker(
+                [8.17, 77.32],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_0b9d78fc4046a858edfa3ba165208946 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "anchor",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fbd878de87b423e2e2fd742f756c0188 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3c117d8a85a5e12047771d18590f8a03 = $(`<div id="html_3c117d8a85a5e12047771d18590f8a03" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Enayam Port Tamil Nadu                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Complete Sagarmala — 400+ port projects worth ₹5.48 lakh crore...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹5,48,000 Crore                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 217 projects completed worth ₹1.02 lakh crore                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Cost overruns in 67% of projects reviewed                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 8.17, 77.32 | Tamil Nadu                     </div>                 </div>                 </div>`)[0];
+                popup_fbd878de87b423e2e2fd742f756c0188.setContent(html_3c117d8a85a5e12047771d18590f8a03);
+            
+        
+
+        marker_a3ffc7fb95d474b402043e2e758e1983.bindPopup(popup_fbd878de87b423e2e2fd742f756c0188)
+        ;
+
+        
+    
+    
+            marker_a3ffc7fb95d474b402043e2e758e1983.bindTooltip(
+                `<div>
+                     🛰️ Enayam Port Tamil Nadu — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a3ffc7fb95d474b402043e2e758e1983.setIcon(icon_0b9d78fc4046a858edfa3ba165208946);
+            
+    
+            var circle_62fc09dc1641e4fcb24c614ba88c8dff = L.circle(
+                [8.17, 77.32],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_62fc09dc1641e4fcb24c614ba88c8dff.bindTooltip(
+                `<div>
+                     Verification zone: Enayam Port Tamil Nadu
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_c41ccfdfc15d615128e4622dcc68884c = L.marker(
+                [28.01, 77.57],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_47f4c9d27a73b7e58e0f76b5abf8f1d2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d792dfdd47a7e34f4973e530be527e47 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5c5be98fa1790e4550fa50136a4afbaa = $(`<div id="html_5c5be98fa1790e4550fa50136a4afbaa" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Jewar International Airport UP                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Build 100 new airports and expand existing ones under UDAN scheme...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹98,000 Crore (Airport Authority)                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 74 operational airports under UDAN as of 2024                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Only 26 of 74 routes commercially viable                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 28.01, 77.57 | Uttar Pradesh                     </div>                 </div>                 </div>`)[0];
+                popup_d792dfdd47a7e34f4973e530be527e47.setContent(html_5c5be98fa1790e4550fa50136a4afbaa);
+            
+        
+
+        marker_c41ccfdfc15d615128e4622dcc68884c.bindPopup(popup_d792dfdd47a7e34f4973e530be527e47)
+        ;
+
+        
+    
+    
+            marker_c41ccfdfc15d615128e4622dcc68884c.bindTooltip(
+                `<div>
+                     🛰️ Jewar International Airport UP — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c41ccfdfc15d615128e4622dcc68884c.setIcon(icon_47f4c9d27a73b7e58e0f76b5abf8f1d2);
+            
+    
+            var circle_43d244bac664d35686eadd25d858799a = L.circle(
+                [28.01, 77.57],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_43d244bac664d35686eadd25d858799a.bindTooltip(
+                `<div>
+                     Verification zone: Jewar International Airport UP
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e442c7b2b52f96126dbed251d1b9ae92 = L.marker(
+                [18.99, 73.07],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_d948246d9dbda4bbb82149ca7641c055 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1076c459c228387b5875a0482453fee8 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_a1872ce52fac54466d57f1ef8c9b8c4a = $(`<div id="html_a1872ce52fac54466d57f1ef8c9b8c4a" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Navi Mumbai Airport                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Build 100 new airports and expand existing ones under UDAN scheme...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹98,000 Crore (Airport Authority)                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 74 operational airports under UDAN as of 2024                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Only 26 of 74 routes commercially viable                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 18.99, 73.07 | Maharashtra                     </div>                 </div>                 </div>`)[0];
+                popup_1076c459c228387b5875a0482453fee8.setContent(html_a1872ce52fac54466d57f1ef8c9b8c4a);
+            
+        
+
+        marker_e442c7b2b52f96126dbed251d1b9ae92.bindPopup(popup_1076c459c228387b5875a0482453fee8)
+        ;
+
+        
+    
+    
+            marker_e442c7b2b52f96126dbed251d1b9ae92.bindTooltip(
+                `<div>
+                     🛰️ Navi Mumbai Airport — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e442c7b2b52f96126dbed251d1b9ae92.setIcon(icon_d948246d9dbda4bbb82149ca7641c055);
+            
+    
+            var circle_f7471d661c8abff424ce714d143f1c6b = L.circle(
+                [18.99, 73.07],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_f7471d661c8abff424ce714d143f1c6b.bindTooltip(
+                `<div>
+                     Verification zone: Navi Mumbai Airport
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2fb232dfae733af7b50c920c8829c81e = L.marker(
+                [18.02, 83.47],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_325a423e9d729b2aa0d75d263b46c1cd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_25c75bb7a600ca893dd6cfbafe71e80f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9f022ff76eb0df32c83ba9a4e3d9ab55 = $(`<div id="html_9f022ff76eb0df32c83ba9a4e3d9ab55" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Bhogapuram Airport AP                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Build 100 new airports and expand existing ones under UDAN scheme...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹98,000 Crore (Airport Authority)                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 74 operational airports under UDAN as of 2024                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Only 26 of 74 routes commercially viable                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 18.02, 83.47 | Andhra Pradesh                     </div>                 </div>                 </div>`)[0];
+                popup_25c75bb7a600ca893dd6cfbafe71e80f.setContent(html_9f022ff76eb0df32c83ba9a4e3d9ab55);
+            
+        
+
+        marker_2fb232dfae733af7b50c920c8829c81e.bindPopup(popup_25c75bb7a600ca893dd6cfbafe71e80f)
+        ;
+
+        
+    
+    
+            marker_2fb232dfae733af7b50c920c8829c81e.bindTooltip(
+                `<div>
+                     🛰️ Bhogapuram Airport AP — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2fb232dfae733af7b50c920c8829c81e.setIcon(icon_325a423e9d729b2aa0d75d263b46c1cd);
+            
+    
+            var circle_f9051f25fae3025b3b3d13fdf6322dec = L.circle(
+                [18.02, 83.47],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_f9051f25fae3025b3b3d13fdf6322dec.bindTooltip(
+                `<div>
+                     Verification zone: Bhogapuram Airport AP
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_99079b142fd3cba60c7f09fd6391ee46 = L.marker(
+                [27.1, 93.6],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_6ebd4569f6dbacd1e8d8a87f17bc52a6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "plane",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8e6872952e1e3963a2a9acdc1df2dbf1 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5c2058a198bcd41a7bb8f191c8b7eec4 = $(`<div id="html_5c2058a198bcd41a7bb8f191c8b7eec4" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Hollongi Airport Arunachal                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Build 100 new airports and expand existing ones under UDAN scheme...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹98,000 Crore (Airport Authority)                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: 74 operational airports under UDAN as of 2024                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Only 26 of 74 routes commercially viable                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 27.1, 93.6 | Arunachal Pradesh                     </div>                 </div>                 </div>`)[0];
+                popup_8e6872952e1e3963a2a9acdc1df2dbf1.setContent(html_5c2058a198bcd41a7bb8f191c8b7eec4);
+            
+        
+
+        marker_99079b142fd3cba60c7f09fd6391ee46.bindPopup(popup_8e6872952e1e3963a2a9acdc1df2dbf1)
+        ;
+
+        
+    
+    
+            marker_99079b142fd3cba60c7f09fd6391ee46.bindTooltip(
+                `<div>
+                     🛰️ Hollongi Airport Arunachal — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_99079b142fd3cba60c7f09fd6391ee46.setIcon(icon_6ebd4569f6dbacd1e8d8a87f17bc52a6);
+            
+    
+            var circle_eafb2d7d27884c680ae2aee099fcc0e4 = L.circle(
+                [27.1, 93.6],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_eafb2d7d27884c680ae2aee099fcc0e4.bindTooltip(
+                `<div>
+                     Verification zone: Hollongi Airport Arunachal
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_edd79a15eaaacf470df0af7ff8800859 = L.marker(
+                [25.5, 84.0],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_ad2518d92e3e4a96786d1f1330fd86e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "train",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_520444502709e9601ca0c01509b71948 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b07cd66bde194cfbe12c7651a75e8ae9 = $(`<div id="html_b07cd66bde194cfbe12c7651a75e8ae9" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Eastern DFC Ludhiana to Dankuni                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Complete dedicated freight corridors — Eastern and Western DFC...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹81,459 Crore                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: Eastern DFC 95% complete, Western DFC 100% complete                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Last mile connectivity missing at 34 terminals                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 25.5, 84.0 | Multiple                     </div>                 </div>                 </div>`)[0];
+                popup_520444502709e9601ca0c01509b71948.setContent(html_b07cd66bde194cfbe12c7651a75e8ae9);
+            
+        
+
+        marker_edd79a15eaaacf470df0af7ff8800859.bindPopup(popup_520444502709e9601ca0c01509b71948)
+        ;
+
+        
+    
+    
+            marker_edd79a15eaaacf470df0af7ff8800859.bindTooltip(
+                `<div>
+                     🛰️ Eastern DFC Ludhiana to Dankuni — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_edd79a15eaaacf470df0af7ff8800859.setIcon(icon_ad2518d92e3e4a96786d1f1330fd86e6);
+            
+    
+            var circle_7e0a1bef668c3adc298893796ac9bbe1 = L.circle(
+                [25.5, 84.0],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_7e0a1bef668c3adc298893796ac9bbe1.bindTooltip(
+                `<div>
+                     Verification zone: Eastern DFC Ludhiana to Dankuni
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_fde5ff9cdc3b50de987cb39a4a66c56d = L.marker(
+                [21.0, 73.0],
+                {
+}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            var icon_a4124997695633371a5cb7310e22d813 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "train",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_72fe59da16805b405f109e2b3870f677 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c66a53d70647a659e09c6937bbe48fc2 = $(`<div id="html_c66a53d70647a659e09c6937bbe48fc2" style="width: 100.0%; height: 100.0%;">                 <div style="font-family:monospace; min-width:300px; background:#0d0d1a; color:#e0e0e0; padding:15px; border-radius:8px;">                     <div style="color:#ff3355; font-size:0.7em; letter-spacing:2px; margin-bottom:8px;">                         GOVTRUTH SATELLITE VERIFICATION                     </div>                     <div style="color:#fff; font-weight:bold; margin-bottom:10px;">                         Western DFC Dadri to JNPT                     </div>                     <div style="color:#888; font-size:0.8em; margin-bottom:5px;">                         📋 PROMISE: Complete dedicated freight corridors — Eastern and Western DFC...                     </div>                     <div style="color:#ffaa00; font-size:0.8em; margin-bottom:5px;">                         💰 BUDGET: ₹81,459 Crore                     </div>                     <div style="color:#3399ff; font-size:0.8em; margin-bottom:5px;">                         🏛️ GOVT CLAIM: Eastern DFC 95% complete, Western DFC 100% complete                     </div>                     <div style="color:#ff3355; font-size:0.8em; margin-bottom:10px;">                         📊 CAG FINDING: Last mile connectivity missing at 34 terminals                     </div>                     <div style="background:#ff335522; color:#ff3355; padding:5px 10px; border-radius:4px; font-size:0.75em; text-align:center;">                         STATUS: PENDING_SATELLITE                     </div>                     <div style="color:#444; font-size:0.65em; margin-top:8px; text-align:center;">                         Coords: 21.0, 73.0 | Multiple                     </div>                 </div>                 </div>`)[0];
+                popup_72fe59da16805b405f109e2b3870f677.setContent(html_c66a53d70647a659e09c6937bbe48fc2);
+            
+        
+
+        marker_fde5ff9cdc3b50de987cb39a4a66c56d.bindPopup(popup_72fe59da16805b405f109e2b3870f677)
+        ;
+
+        
+    
+    
+            marker_fde5ff9cdc3b50de987cb39a4a66c56d.bindTooltip(
+                `<div>
+                     🛰️ Western DFC Dadri to JNPT — PENDING_SATELLITE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fde5ff9cdc3b50de987cb39a4a66c56d.setIcon(icon_a4124997695633371a5cb7310e22d813);
+            
+    
+            var circle_67fac3446fda0974a05d1db8bfd775ab = L.circle(
+                [21.0, 73.0],
+                {"bubblingMouseEvents": true, "color": "#ff335544", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff335511", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5000, "stroke": true, "weight": 3}
+            ).addTo(map_e9d6367cba997a68152e7d79f80e754a);
+        
+    
+            circle_67fac3446fda0974a05d1db8bfd775ab.bindTooltip(
+                `<div>
+                     Verification zone: Western DFC Dadri to JNPT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

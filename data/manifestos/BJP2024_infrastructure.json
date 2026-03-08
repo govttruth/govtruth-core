@@ -1,0 +1,177 @@
+{
+  "party": "BJP",
+  "election": "2024 General Election",
+  "manifesto": "Sankalp Patra 2024",
+  "source": "bjp.org/manifesto2024",
+  "scraped_date": "2026-03-08",
+  "total_promises": 5,
+  "category": "Infrastructure",
+  "promises": [
+    {
+      "promise_id": "BJP24-INFRA-001",
+      "promise": "Complete all 26 Greenfield expressways under Bharatmala Phase 1",
+      "ministry": "Ministry of Road Transport and Highways",
+      "budget_promised": "₹10,23,784 Crore (total Bharatmala)",
+      "deadline": "2024-2027",
+      "locations": [
+        {
+          "name": "Delhi-Mumbai Expressway",
+          "lat": 26.8,
+          "lon": 75.8,
+          "state": "Rajasthan"
+        },
+        {
+          "name": "Delhi-Amritsar-Katra Expressway",
+          "lat": 31.6,
+          "lon": 75.0,
+          "state": "Punjab"
+        },
+        {
+          "name": "Bengaluru-Chennai Expressway",
+          "lat": 13.0,
+          "lon": 79.5,
+          "state": "Tamil Nadu"
+        },
+        {
+          "name": "Hyderabad-Bengaluru Corridor",
+          "lat": 15.3,
+          "lon": 77.0,
+          "state": "Andhra Pradesh"
+        },
+        {
+          "name": "Ganga Expressway UP",
+          "lat": 26.8,
+          "lon": 81.0,
+          "state": "Uttar Pradesh"
+        }
+      ],
+      "govt_claim": "75% complete as of March 2024",
+      "govt_source": "MoRTH Annual Report 2024",
+      "cag_finding": "Delays of 2-5 years reported in 18 of 26 corridors",
+      "verification_status": "PENDING_SATELLITE",
+      "verdict": null
+    },
+    {
+      "promise_id": "BJP24-INFRA-002",
+      "promise": "Build 2 lakh km of national highways by 2024",
+      "ministry": "Ministry of Road Transport and Highways",
+      "budget_promised": "₹1,44,634 Crore (2024-25 budget)",
+      "deadline": "2024",
+      "locations": [
+        {
+          "name": "NH-44 Expansion Kashmir to Kanyakumari",
+          "lat": 23.0,
+          "lon": 77.0,
+          "state": "Multiple"
+        },
+        {
+          "name": "NH-48 Delhi Mumbai Highway",
+          "lat": 24.5,
+          "lon": 73.7,
+          "state": "Rajasthan"
+        }
+      ],
+      "govt_claim": "1,44,955 km NH network as of 2023",
+      "govt_source": "MoRTH NH Statistics 2023",
+      "cag_finding": "Quality audit pending for 34% of new construction",
+      "verification_status": "PENDING_SATELLITE",
+      "verdict": null
+    },
+    {
+      "promise_id": "BJP24-INFRA-003",
+      "promise": "Complete Sagarmala — 400+ port projects worth ₹5.48 lakh crore",
+      "ministry": "Ministry of Ports, Shipping and Waterways",
+      "budget_promised": "₹5,48,000 Crore",
+      "deadline": "2035 (phase-wise)",
+      "locations": [
+        {
+          "name": "Vadhavan Port Maharashtra",
+          "lat": 19.97,
+          "lon": 72.69,
+          "state": "Maharashtra"
+        },
+        {
+          "name": "Galathea Bay Port Andaman",
+          "lat": 7.05,
+          "lon": 93.9,
+          "state": "Andaman"
+        },
+        {
+          "name": "Enayam Port Tamil Nadu",
+          "lat": 8.17,
+          "lon": 77.32,
+          "state": "Tamil Nadu"
+        }
+      ],
+      "govt_claim": "217 projects completed worth ₹1.02 lakh crore",
+      "govt_source": "Sagarmala Progress Report 2024",
+      "cag_finding": "Cost overruns in 67% of projects reviewed",
+      "verification_status": "PENDING_SATELLITE",
+      "verdict": null
+    },
+    {
+      "promise_id": "BJP24-INFRA-004",
+      "promise": "Build 100 new airports and expand existing ones under UDAN scheme",
+      "ministry": "Ministry of Civil Aviation",
+      "budget_promised": "₹98,000 Crore (Airport Authority)",
+      "deadline": "2024-2030",
+      "locations": [
+        {
+          "name": "Jewar International Airport UP",
+          "lat": 28.01,
+          "lon": 77.57,
+          "state": "Uttar Pradesh"
+        },
+        {
+          "name": "Navi Mumbai Airport",
+          "lat": 18.99,
+          "lon": 73.07,
+          "state": "Maharashtra"
+        },
+        {
+          "name": "Bhogapuram Airport AP",
+          "lat": 18.02,
+          "lon": 83.47,
+          "state": "Andhra Pradesh"
+        },
+        {
+          "name": "Hollongi Airport Arunachal",
+          "lat": 27.1,
+          "lon": 93.6,
+          "state": "Arunachal Pradesh"
+        }
+      ],
+      "govt_claim": "74 operational airports under UDAN as of 2024",
+      "govt_source": "DGCA Annual Report 2024",
+      "cag_finding": "Only 26 of 74 routes commercially viable",
+      "verification_status": "PENDING_SATELLITE",
+      "verdict": null
+    },
+    {
+      "promise_id": "BJP24-INFRA-005",
+      "promise": "Complete dedicated freight corridors — Eastern and Western DFC",
+      "ministry": "Ministry of Railways",
+      "budget_promised": "₹81,459 Crore",
+      "deadline": "2024",
+      "locations": [
+        {
+          "name": "Eastern DFC Ludhiana to Dankuni",
+          "lat": 25.5,
+          "lon": 84.0,
+          "state": "Multiple"
+        },
+        {
+          "name": "Western DFC Dadri to JNPT",
+          "lat": 21.0,
+          "lon": 73.0,
+          "state": "Multiple"
+        }
+      ],
+      "govt_claim": "Eastern DFC 95% complete, Western DFC 100% complete",
+      "govt_source": "DFCCIL Progress Report 2024",
+      "cag_finding": "Last mile connectivity missing at 34 terminals",
+      "verification_status": "PENDING_SATELLITE",
+      "verdict": null
+    }
+  ]
+}

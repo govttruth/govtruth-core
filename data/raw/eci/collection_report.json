@@ -1,0 +1,28 @@
+{
+  "date": "2026-03-08T19:18:35.020339",
+  "source": "Election Commission of India",
+  "source_url": "https://affidavitarchive.nic.in",
+  "successful": 4,
+  "results": [
+    {
+      "election": "GE2024",
+      "status": "success",
+      "file": "data\\raw\\eci\\GE2024.html"
+    },
+    {
+      "election": "GE2019",
+      "status": "success",
+      "file": "data\\raw\\eci\\GE2019.html"
+    },
+    {
+      "election": "GE2014",
+      "status": "success",
+      "file": "data\\raw\\eci\\GE2014.html"
+    },
+    {
+      "election": "GE2009",
+      "status": "success",
+      "file": "data\\raw\\eci\\GE2009.html"
+    }
+  ]
+}

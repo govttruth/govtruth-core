@@ -1,18 +1,10 @@
-"""
-ECI Affidavit Collector
-=======================
-Collects MP asset declarations from
-Election Commission of India official archive.
-
-Source: https://affidavitarchive.nic.in
-Legal: Supreme Court mandated public disclosure
-"""
-
 import requests
 import os
 import time
 import json
 import logging
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 from datetime import datetime
 from pathlib import Path
 
@@ -39,10 +31,7 @@ class ECICollector:
         self.data_dir.mkdir(parents=True, exist_ok=True)
         self.session = requests.Session()
         self.session.headers.update({
-            'User-Agent': (
-                'GovTruth-Research/1.0 '
-                'Contact: govtruth.project@proton.me'
-            )
+            'User-Agent': 'GovTruth-Research/1.0 Contact: govtruth.project@proton.me'
         })
         logger.info(f"ECICollector ready. Dir: {self.data_dir}")
 
@@ -51,7 +40,7 @@ class ECICollector:
         url = f"{self.BASE_URL}/DynamicAffidavit.aspx"
         try:
             response = self.session.get(
-                url, params={'ecode': code}, timeout=30
+                url, params={'ecode': code}, timeout=30, verify=False
             )
             response.raise_for_status()
             filepath = self.data_dir / f"{name}.html"
@@ -59,12 +48,10 @@ class ECICollector:
                 f.write(response.text)
             logger.info(f"Saved {name}: {len(response.text):,} bytes")
             time.sleep(3)
-            return {'election': name, 'status': 'success',
-                    'file': str(filepath)}
+            return {'election': name, 'status': 'success', 'file': str(filepath)}
         except Exception as e:
             logger.error(f"Failed {name}: {e}")
-            return {'election': name, 'status': 'failed',
-                    'error': str(e)}
+            return {'election': name, 'status': 'failed', 'error': str(e)}
 
     def collect_all(self):
         logger.info("GovTruth - ECI Collection Starting")
@@ -76,17 +63,13 @@ class ECICollector:
             'date': datetime.now().isoformat(),
             'source': 'Election Commission of India',
             'source_url': 'https://affidavitarchive.nic.in',
-            'successful': sum(
-                1 for r in results if r['status'] == 'success'
-            ),
+            'successful': sum(1 for r in results if r['status'] == 'success'),
             'results': results
         }
         report_path = self.data_dir / 'collection_report.json'
         with open(report_path, 'w') as f:
             json.dump(report, f, indent=2)
-        logger.info(
-            f"Done. Success: {report['successful']}/{len(results)}"
-        )
+        logger.info(f"Done. Success: {report['successful']}/{len(results)}")
         return report
 
 
@@ -96,18 +79,3 @@ if __name__ == "__main__":
     collector = ECICollector()
     report = collector.collect_all()
     print(f"Complete: {report['successful']} elections downloaded")
-```
-
-Commit message:
-```
-Add eci_collector.py to correct location
-```
-
----
-
-**After both steps, scrapers/ should look like:**
-```
-scrapers/
-  ✅ README.md
-  ✅ eci_collector.py
-  ✅ cag_downloader.py
