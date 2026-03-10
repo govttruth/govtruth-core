@@ -43,7 +43,7 @@ def build_mp_rows():
         case_html = f'<span class="flag flag-red">{cases} CASES</span>' if cases > 0 else '<span class="flag flag-green">CLEAN</span>'
         
         rows += f"""
-        <tr>
+        <tr data-cases="{cases}" data-assets="{assets}">
             <td style="color:#444">{i}</td>
             <td>
                 <div class="mp-name">{mp['name']}</div>
