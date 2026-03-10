@@ -198,6 +198,37 @@ def dashboard():
             .hero-stats {{ gap: 20px; }}
             .nav-links {{ display: none; }}
         }}
+
+        .search-box {
+            display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;
+        }
+        .search-input {
+            flex: 1; min-width: 200px; background: #0d0d1a; border: 1px solid #1a1a3a;
+            color: #fff; padding: 10px 16px; border-radius: 6px; font-size: 0.9em;
+            outline: none;
+        }
+        .search-input:focus { border-color: #00ff88; }
+        .search-input::placeholder { color: #444; }
+        .filter-btn {
+            background: #0d0d1a; border: 1px solid #1a1a3a; color: #888;
+            padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 0.8em;
+            letter-spacing: 1px; transition: all 0.2s;
+        }
+        .filter-btn:hover { border-color: #ff3355; color: #ff3355; }
+        .filter-active { border-color: #ff3355 !important; color: #ff3355 !important; }
+        .toggle-btn {
+            background: #0d0d1a; border: 1px solid #1a1a3a; color: #888;
+            padding: 10px 14px; border-radius: 6px; cursor: pointer; font-size: 0.75em;
+            letter-spacing: 1px; margin-left: auto;
+        }
+        .toggle-btn:hover { border-color: #00ff88; color: #00ff88; }
+        .table-collapsed { max-height: 320px; overflow-y: hidden; position: relative; }
+        .table-collapsed::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 80px; background: linear-gradient(transparent, #0a0a0f);
+            pointer-events: none;
+        }
+        .search-count { font-size: 0.75em; color: #666; margin-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -279,10 +310,20 @@ def dashboard():
     <div id="mps">
         <div class="section-header">
             <span class="icon">📊</span>
-            <h2>MP Asset Tracker — Top 50 by Declared Assets</h2>
+            <h2>MP Asset Tracker — Search All 483 MPs</h2>
             <span class="count">{total} MPs · Source: ECI 2024</span>
         </div>
-        <div class="table-container">
+        <input type="hidden" id="active-filter" value="all">
+        <div class="search-box">
+            <input class="search-input" id="mp-search" placeholder="Search MP name, party, constituency..." oninput="searchMPs()">
+            <button class="filter-btn filter-active" onclick="setFilter('all', this)">ALL</button>
+            <button class="filter-btn" onclick="setFilter('criminal', this)">CRIMINAL CASES</button>
+            <button class="filter-btn" onclick="setFilter('100cr', this)">100CR+</button>
+            <button class="filter-btn" onclick="setFilter('notfiled', this)">NOT FILED</button>
+            <button class="toggle-btn" id="toggle-btn" onclick="toggleTable()">MINIMIZE</button>
+        </div>
+        <div class="search-count" id="search-count">483 MPs shown</div>
+        <div class="table-container" id="mp-table-container">
             <table>
                 <thead>
                     <tr>
@@ -294,7 +335,7 @@ def dashboard():
                         <th>Source</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="mp-tbody">
                     {mp_rows}
                 </tbody>
             </table>
@@ -454,6 +495,56 @@ def dashboard():
             </div>
         </div>
     </div>
+
+<script>
+var tableCollapsed = false;
+
+function searchMPs() {
+    var query = document.getElementById('mp-search').value.toLowerCase();
+    var filter = document.getElementById('active-filter').value;
+    var rows = document.querySelectorAll('#mp-tbody tr');
+    var visible = 0;
+    rows.forEach(function(row) {
+        var text = row.textContent.toLowerCase();
+        var matchQuery = !query || text.includes(query);
+        var cases = parseInt(row.getAttribute('data-cases') || '0');
+        var assets = parseFloat(row.getAttribute('data-assets') || '0');
+        var matchFilter = true;
+        if (filter === 'criminal') matchFilter = cases > 0;
+        if (filter === '100cr') matchFilter = assets > 10000000000;
+        if (filter === 'notfiled') matchFilter = assets === 0;
+        if (matchQuery && matchFilter) {
+            row.style.display = '';
+            visible++;
+        } else {
+            row.style.display = 'none';
+        }
+    });
+    document.getElementById('search-count').textContent = visible + ' MPs shown';
+}
+
+function setFilter(val, btn) {
+    document.getElementById('active-filter').value = val;
+    document.querySelectorAll('.filter-btn').forEach(function(b) {
+        b.classList.remove('filter-active');
+    });
+    btn.classList.add('filter-active');
+    searchMPs();
+}
+
+function toggleTable() {
+    var tc = document.getElementById('mp-table-container');
+    var btn = document.getElementById('toggle-btn');
+    tableCollapsed = !tableCollapsed;
+    if (tableCollapsed) {
+        tc.classList.add('table-collapsed');
+        btn.textContent = 'EXPAND';
+    } else {
+        tc.classList.remove('table-collapsed');
+        btn.textContent = 'MINIMIZE';
+    }
+}
+</script>
 </body>
 </html>
     """
