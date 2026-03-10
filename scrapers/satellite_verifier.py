@@ -46,67 +46,78 @@ class SatelliteVerifier:
             return json.load(f)
 
     def analyze_location_openeo(self, location, promise_id):
-        """Pull Sentinel-2 imagery and detect construction activity"""
+        """Pull Sentinel-2 RGB + NDVI imagery with precise coordinates"""
         try:
             import openeo
             lat, lon = location['lat'], location['lon']
+
+            # Tight 2km box — precise location
             bbox = {
-                "west": lon - 0.05,
-                "south": lat - 0.05,
-                "east": lon + 0.05,
-                "north": lat + 0.05
+                "west": lon - 0.01,
+                "south": lat - 0.01,
+                "east": lon + 0.01,
+                "north": lat + 0.01
             }
 
             logger.info(f"  Fetching Sentinel-2 imagery for {location['name']}...")
 
-            # 2019 baseline (before major construction)
+            # 2019 baseline — dry season, clear sky only
             s2_2019 = self.connection.load_collection(
                 "SENTINEL2_L2A",
                 spatial_extent=bbox,
-                temporal_extent=["2019-01-01", "2019-12-31"],
-                bands=["B04", "B08", "B11"]  # Red, NIR, SWIR
-            ).filter_bbox(bbox)
+                temporal_extent=["2019-01-01", "2019-03-31"],
+                bands=["B04", "B03", "B02", "B08"],
+                max_cloud_cover=10
+            )
 
-            # 2024 current state
+            # 2024 current — same dry season window
             s2_2024 = self.connection.load_collection(
                 "SENTINEL2_L2A",
                 spatial_extent=bbox,
-                temporal_extent=["2024-01-01", "2024-12-31"],
-                bands=["B04", "B08", "B11"]
-            ).filter_bbox(bbox)
+                temporal_extent=["2024-01-01", "2024-03-31"],
+                bands=["B04", "B03", "B02", "B08"],
+                max_cloud_cover=10
+            )
 
-            # Calculate NDVI for both periods
-            # NDVI = (NIR - Red) / (NIR + Red)
-            # Construction reduces NDVI (less vegetation, more bare earth/concrete)
-            ndvi_2019 = s2_2019.ndvi(nir="B08", red="B04")
-            ndvi_2024 = s2_2024.ndvi(nir="B08", red="B04")
+            name_clean = location['name'].replace(' ', '_').replace('/', '_')
 
-            # Save results
-            out_2019 = str(self.data_dir / f"{promise_id}_{location['name'].replace(' ','_')}_2019.tif")
-            out_2024 = str(self.data_dir / f"{promise_id}_{location['name'].replace(' ','_')}_2024.tif")
+            # RGB true color
+            s2_2019.filter_bands(["B04", "B03", "B02"]).min_time().download(
+                str(self.data_dir / f"{promise_id}_{name_clean}_RGB_2019.tif"),
+                format="GTiff"
+            )
+            s2_2024.filter_bands(["B04", "B03", "B02"]).min_time().download(
+                str(self.data_dir / f"{promise_id}_{name_clean}_RGB_2024.tif"),
+                format="GTiff"
+            )
 
-            ndvi_2019.download(out_2019, format="GTiff")
-            ndvi_2024.download(out_2024, format="GTiff")
+            # NDVI change detection
+            s2_2019.ndvi(nir="B08", red="B04").min_time().download(
+                str(self.data_dir / f"{promise_id}_{name_clean}_NDVI_2019.tif"),
+                format="GTiff"
+            )
+            s2_2024.ndvi(nir="B08", red="B04").min_time().download(
+                str(self.data_dir / f"{promise_id}_{name_clean}_NDVI_2024.tif"),
+                format="GTiff"
+            )
 
-            logger.info(f"  Downloaded imagery for {location['name']}")
-            return {"status": "DOWNLOADED", "files": [out_2019, out_2024]}
+            logger.info(f"  Downloaded RGB + NDVI for {location['name']}")
+            return {"status": "DOWNLOADED", "type": "RGB+NDVI"}
 
         except Exception as e:
-            logger.warning(f"  OpenEO imagery failed for {location['name']}: {e}")
+            logger.warning(f"  Failed for {location['name']}: {e}")
             return {"status": "FAILED", "error": str(e)}
 
     def generate_verification_map(self, promises_data):
         """Generate interactive verification map with all 16 locations"""
         logger.info("Generating interactive verification map...")
 
-        # Center map on India
         m = folium.Map(
             location=[20.5937, 78.9629],
             zoom_start=5,
             tiles='CartoDB dark_matter'
         )
 
-        # Color coding
         colors = {
             "PENDING_SATELLITE": "orange",
             "VERIFIED": "green",
@@ -115,22 +126,11 @@ class SatelliteVerifier:
             "CONTRADICTED": "darkred"
         }
 
-        icons = {
-            "Infrastructure": "road",
-            "Airport": "plane",
-            "Port": "ship",
-            "Railway": "train"
-        }
-
-        promise_groups = {}
-
         for promise in promises_data['promises']:
-            pid = promise['promise_id']
             status = promise['verification_status']
             color = colors.get(status, 'orange')
 
             for loc in promise['locations']:
-                # Determine icon
                 name_lower = loc['name'].lower()
                 if 'airport' in name_lower:
                     icon = 'plane'
@@ -177,17 +177,15 @@ class SatelliteVerifier:
                     icon=folium.Icon(color=color, icon=icon, prefix='fa')
                 ).add_to(m)
 
-                # Draw verification radius circle
                 folium.Circle(
                     location=[loc['lat'], loc['lon']],
-                    radius=5000,  # 5km radius
+                    radius=5000,
                     color='#ff335544',
                     fill=True,
                     fill_color='#ff335511',
                     tooltip=f"Verification zone: {loc['name']}"
                 ).add_to(m)
 
-        # Add title
         title_html = '''
         <div style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
                     z-index: 1000; background: #0d0d1a; color: white;
@@ -201,7 +199,6 @@ class SatelliteVerifier:
         '''
         m.get_root().html.add_child(folium.Element(title_html))
 
-        # Add legend
         legend_html = '''
         <div style="position: fixed; bottom: 30px; right: 10px; z-index: 1000;
                     background: #0d0d1a; color: white; padding: 15px;
@@ -219,7 +216,6 @@ class SatelliteVerifier:
         '''
         m.get_root().html.add_child(folium.Element(legend_html))
 
-        # Save map
         map_path = self.maps_dir / 'BJP2024_infrastructure_verification.html'
         m.save(str(map_path))
         logger.info(f"Map saved: {map_path}")
@@ -260,11 +256,9 @@ class SatelliteVerifier:
         logger.info("GovTruth Satellite Verification Engine Starting...")
         logger.info("=" * 60)
 
-        # Load promises
         promises_data = self.load_promises()
         logger.info(f"Loaded {promises_data['total_promises']} promises with {sum(len(p['locations']) for p in promises_data['promises'])} locations")
 
-        # Try OpenEO connection
         openeo_available = self.connect_openeo()
 
         if openeo_available:
@@ -277,18 +271,13 @@ class SatelliteVerifier:
                     time.sleep(2)
         else:
             logger.info("OpenEO not connected — generating map for manual verification")
-            logger.info("You can authenticate at: https://openeo.dataspace.copernicus.eu")
 
-        # Always generate the map
         map_path = self.generate_verification_map(promises_data)
-
-        # Generate report
         report = self.generate_verification_report(promises_data)
 
         logger.info("\n" + "=" * 60)
         logger.info("VERIFICATION ENGINE COMPLETE")
         logger.info(f"Interactive map: {map_path}")
-        logger.info(f"Open in browser to see all 16 locations on satellite map")
         logger.info("=" * 60)
 
         print(f"\n✅ Map generated successfully!")

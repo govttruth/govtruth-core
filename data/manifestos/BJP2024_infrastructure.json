@@ -15,33 +15,33 @@
       "deadline": "2024-2027",
       "locations": [
         {
-          "name": "Delhi-Mumbai Expressway",
-          "lat": 26.8,
-          "lon": 75.8,
+          "name": "Delhi-Mumbai Expressway Sohna",
+          "lat": 28.2411,
+          "lon": 77.0517,
+          "state": "Haryana"
+        },
+        {
+          "name": "Delhi-Mumbai Expressway Dausa",
+          "lat": 26.8849,
+          "lon": 76.3357,
           "state": "Rajasthan"
         },
         {
-          "name": "Delhi-Amritsar-Katra Expressway",
-          "lat": 31.6,
-          "lon": 75.0,
-          "state": "Punjab"
+          "name": "Delhi-Amritsar-Katra Expressway Panipat",
+          "lat": 29.3909,
+          "lon": 76.9635,
+          "state": "Haryana"
         },
         {
-          "name": "Bengaluru-Chennai Expressway",
-          "lat": 13.0,
-          "lon": 79.5,
-          "state": "Tamil Nadu"
+          "name": "Bengaluru-Chennai Expressway Hoskote",
+          "lat": 13.0701,
+          "lon": 77.7981,
+          "state": "Karnataka"
         },
         {
-          "name": "Hyderabad-Bengaluru Corridor",
-          "lat": 15.3,
-          "lon": 77.0,
-          "state": "Andhra Pradesh"
-        },
-        {
-          "name": "Ganga Expressway UP",
-          "lat": 26.8,
-          "lon": 81.0,
+          "name": "Ganga Expressway Shahjahanpur",
+          "lat": 27.8974,
+          "lon": 79.9054,
           "state": "Uttar Pradesh"
         }
       ],
@@ -59,16 +59,16 @@
       "deadline": "2024",
       "locations": [
         {
-          "name": "NH-44 Expansion Kashmir to Kanyakumari",
-          "lat": 23.0,
-          "lon": 77.0,
-          "state": "Multiple"
+          "name": "NH-44 Jalandhar Bypass",
+          "lat": 31.326,
+          "lon": 75.5762,
+          "state": "Punjab"
         },
         {
-          "name": "NH-48 Delhi Mumbai Highway",
-          "lat": 24.5,
-          "lon": 73.7,
-          "state": "Rajasthan"
+          "name": "NH-48 Vadodara Section",
+          "lat": 22.3072,
+          "lon": 73.1812,
+          "state": "Gujarat"
         }
       ],
       "govt_claim": "1,44,955 km NH network as of 2023",
@@ -85,22 +85,22 @@
       "deadline": "2035 (phase-wise)",
       "locations": [
         {
-          "name": "Vadhavan Port Maharashtra",
-          "lat": 19.97,
-          "lon": 72.69,
+          "name": "Vadhavan Port Dahanu Maharashtra",
+          "lat": 19.9676,
+          "lon": 72.7177,
           "state": "Maharashtra"
         },
         {
-          "name": "Galathea Bay Port Andaman",
-          "lat": 7.05,
-          "lon": 93.9,
-          "state": "Andaman"
+          "name": "Enayam Port Colachel Tamil Nadu",
+          "lat": 8.1744,
+          "lon": 77.2517,
+          "state": "Tamil Nadu"
         },
         {
-          "name": "Enayam Port Tamil Nadu",
-          "lat": 8.17,
-          "lon": 77.32,
-          "state": "Tamil Nadu"
+          "name": "Galathea Bay Andaman",
+          "lat": 7.0534,
+          "lon": 93.9022,
+          "state": "Andaman"
         }
       ],
       "govt_claim": "217 projects completed worth ₹1.02 lakh crore",
@@ -111,33 +111,33 @@
     },
     {
       "promise_id": "BJP24-INFRA-004",
-      "promise": "Build 100 new airports and expand existing ones under UDAN scheme",
+      "promise": "Build 100 new airports under UDAN scheme",
       "ministry": "Ministry of Civil Aviation",
-      "budget_promised": "₹98,000 Crore (Airport Authority)",
+      "budget_promised": "₹98,000 Crore",
       "deadline": "2024-2030",
       "locations": [
         {
-          "name": "Jewar International Airport UP",
-          "lat": 28.01,
-          "lon": 77.57,
+          "name": "Jewar Airport Yamuna Expressway",
+          "lat": 28.012,
+          "lon": 77.568,
           "state": "Uttar Pradesh"
         },
         {
-          "name": "Navi Mumbai Airport",
-          "lat": 18.99,
-          "lon": 73.07,
+          "name": "Navi Mumbai Airport Ulwe",
+          "lat": 18.9894,
+          "lon": 73.0595,
           "state": "Maharashtra"
         },
         {
-          "name": "Bhogapuram Airport AP",
-          "lat": 18.02,
-          "lon": 83.47,
+          "name": "Bhogapuram Airport Vizianagaram",
+          "lat": 18.0239,
+          "lon": 83.4706,
           "state": "Andhra Pradesh"
         },
         {
-          "name": "Hollongi Airport Arunachal",
-          "lat": 27.1,
-          "lon": 93.6,
+          "name": "Hollongi Airport Itanagar",
+          "lat": 27.1557,
+          "lon": 93.619,
           "state": "Arunachal Pradesh"
         }
       ],
@@ -149,25 +149,25 @@
     },
     {
       "promise_id": "BJP24-INFRA-005",
-      "promise": "Complete dedicated freight corridors — Eastern and Western DFC",
+      "promise": "Complete dedicated freight corridors Eastern and Western DFC",
       "ministry": "Ministry of Railways",
       "budget_promised": "₹81,459 Crore",
       "deadline": "2024",
       "locations": [
         {
-          "name": "Eastern DFC Ludhiana to Dankuni",
-          "lat": 25.5,
-          "lon": 84.0,
-          "state": "Multiple"
+          "name": "Eastern DFC Sonnagar Terminal Bihar",
+          "lat": 24.6805,
+          "lon": 84.0732,
+          "state": "Bihar"
         },
         {
-          "name": "Western DFC Dadri to JNPT",
-          "lat": 21.0,
-          "lon": 73.0,
-          "state": "Multiple"
+          "name": "Western DFC Rewari Terminal Haryana",
+          "lat": 28.1778,
+          "lon": 76.6178,
+          "state": "Haryana"
         }
       ],
-      "govt_claim": "Eastern DFC 95% complete, Western DFC 100% complete",
+      "govt_claim": "Eastern DFC 95% complete Western DFC 100% complete",
       "govt_source": "DFCCIL Progress Report 2024",
       "cag_finding": "Last mile connectivity missing at 34 terminals",
       "verification_status": "PENDING_SATELLITE",
