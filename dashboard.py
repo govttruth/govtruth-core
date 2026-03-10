@@ -496,55 +496,55 @@ def dashboard():
         </div>
     </div>
 
-<script>
-var tableCollapsed = false;
+    <script>
+    var tableCollapsed = false;
 
-function searchMPs() {
-    var query = document.getElementById('mp-search').value.toLowerCase();
-    var filter = document.getElementById('active-filter').value;
-    var rows = document.querySelectorAll('#mp-tbody tr');
-    var visible = 0;
-    rows.forEach(function(row) {
-        var text = row.textContent.toLowerCase();
-        var matchQuery = !query || text.includes(query);
-        var cases = parseInt(row.getAttribute('data-cases') || '0');
-        var assets = parseFloat(row.getAttribute('data-assets') || '0');
-        var matchFilter = true;
-        if (filter === 'criminal') matchFilter = cases > 0;
-        if (filter === '100cr') matchFilter = assets > 10000000000;
-        if (filter === 'notfiled') matchFilter = assets === 0;
-        if (matchQuery && matchFilter) {
-            row.style.display = '';
-            visible++;
-        } else {
-            row.style.display = 'none';
-        }
-    });
-    document.getElementById('search-count').textContent = visible + ' MPs shown';
-}
+    function searchMPs() {{
+        var query = document.getElementById('mp-search').value.toLowerCase();
+        var filter = document.getElementById('active-filter').value;
+        var rows = document.querySelectorAll('#mp-tbody tr');
+        var visible = 0;
+        rows.forEach(function(row) {{
+            var text = row.textContent.toLowerCase();
+            var matchQuery = !query || text.includes(query);
+            var cases = parseInt(row.getAttribute('data-cases') || '0');
+            var assets = parseFloat(row.getAttribute('data-assets') || '0');
+            var matchFilter = true;
+            if (filter === 'criminal') matchFilter = cases > 0;
+            if (filter === '100cr') matchFilter = assets > 10000000000;
+            if (filter === 'notfiled') matchFilter = assets === 0;
+            if (matchQuery && matchFilter) {{
+                row.style.display = '';
+                visible++;
+            }} else {{
+                row.style.display = 'none';
+            }}
+        }});
+        document.getElementById('search-count').textContent = visible + ' MPs shown';
+    }}
 
-function setFilter(val, btn) {
-    document.getElementById('active-filter').value = val;
-    document.querySelectorAll('.filter-btn').forEach(function(b) {
-        b.classList.remove('filter-active');
-    });
-    btn.classList.add('filter-active');
-    searchMPs();
-}
+    function setFilter(val, btn) {{
+        document.getElementById('active-filter').value = val;
+        document.querySelectorAll('.filter-btn').forEach(function(b) {{
+            b.classList.remove('filter-active');
+        }});
+        btn.classList.add('filter-active');
+        searchMPs();
+    }}
 
-function toggleTable() {
-    var tc = document.getElementById('mp-table-container');
-    var btn = document.getElementById('toggle-btn');
-    tableCollapsed = !tableCollapsed;
-    if (tableCollapsed) {
-        tc.classList.add('table-collapsed');
-        btn.textContent = 'EXPAND';
-    } else {
-        tc.classList.remove('table-collapsed');
-        btn.textContent = 'MINIMIZE';
-    }
-}
-</script>
+    function toggleTable() {{
+        var tc = document.getElementById('mp-table-container');
+        var btn = document.getElementById('toggle-btn');
+        tableCollapsed = !tableCollapsed;
+        if (tableCollapsed) {{
+            tc.classList.add('table-collapsed');
+            btn.textContent = 'EXPAND';
+        }} else {{
+            tc.classList.remove('table-collapsed');
+            btn.textContent = 'MINIMIZE';
+        }}
+    }}
+    </script>
 </body>
 </html>
     """
