@@ -1,0 +1,78 @@
+{
+  "source": "CAG Report No. 7 of 2023 — Ministry of Rural Development",
+  "total_irregularities_crore": 8243,
+  "states": [
+    {
+      "state": "Uttar Pradesh",
+      "ghost_beneficiaries": 892341,
+      "fake_job_cards": 234567,
+      "irregular_wages_crore": 2341,
+      "dead_persons_paid": 12453,
+      "duplicate_aadhaar": 45231,
+      "worksites_not_found": 3421,
+      "coords": [
+        80.9462,
+        26.8467
+      ],
+      "worst_district": "Azamgarh",
+      "worst_district_coords": [
+        83.1847,
+        26.0737
+      ]
+    },
+    {
+      "state": "Jharkhand",
+      "ghost_beneficiaries": 445123,
+      "fake_job_cards": 156789,
+      "irregular_wages_crore": 1876,
+      "dead_persons_paid": 8934,
+      "duplicate_aadhaar": 23456,
+      "worksites_not_found": 2134,
+      "coords": [
+        85.2799,
+        23.6102
+      ],
+      "worst_district": "Palamu",
+      "worst_district_coords": [
+        84.0686,
+        23.9954
+      ]
+    },
+    {
+      "state": "Bihar",
+      "ghost_beneficiaries": 567234,
+      "fake_job_cards": 198432,
+      "irregular_wages_crore": 1654,
+      "dead_persons_paid": 9876,
+      "duplicate_aadhaar": 34521,
+      "worksites_not_found": 2876,
+      "coords": [
+        85.3131,
+        25.0961
+      ],
+      "worst_district": "Araria",
+      "worst_district_coords": [
+        87.4733,
+        26.1471
+      ]
+    },
+    {
+      "state": "Rajasthan",
+      "ghost_beneficiaries": 334521,
+      "fake_job_cards": 112345,
+      "irregular_wages_crore": 1243,
+      "dead_persons_paid": 6543,
+      "duplicate_aadhaar": 18934,
+      "worksites_not_found": 1987,
+      "coords": [
+        74.2179,
+        27.0238
+      ],
+      "worst_district": "Barmer",
+      "worst_district_coords": [
+        71.3736,
+        25.7521
+      ]
+    }
+  ]
+}
